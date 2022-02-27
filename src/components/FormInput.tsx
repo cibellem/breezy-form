@@ -1,10 +1,22 @@
-import React from "react";
+import { useState } from "react";
 
-export const FormInput = () => {
+//@ts-ignore
+export const FormInput = ({ label, id, type, name }) => {
+  const [value, setValue] = useState<string>("");
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  };
   return (
     <>
-      <label htmlFor="passwordInput">Password:</label>
-      <input id="passwordInput" type="password" name="password" />
+      <label htmlFor={label}>{label}</label>
+      <input
+        id={id}
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
     </>
   );
 };

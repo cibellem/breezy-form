@@ -1,13 +1,6 @@
-import React from "react";
+import { useState } from "react";
+import { FormInput } from "./FormInput";
 
-export const FormInput = () => {
-  return (
-    <>
-      <label htmlFor="passwordInput">Password:</label>
-      <input id="passwordInput" type="password" name="password" />
-    </>
-  );
-};
 
 export const Form = () => {
   return (
@@ -20,12 +13,14 @@ export const Form = () => {
           only a few steps away!
         </h2>
       </section>
-      <label htmlFor="name">First Name:</label>
-      <input id="name" type="text" name="name" />
-      <label htmlFor="email">Email:</label>
-      <input id="email" type="email" name="email" />
-      <label htmlFor="password">Password:</label>
-      <input id="password" type="password" name="password" />
+      <FormInput label="name" id="name" type="text" name="name" />
+      <FormInput label="email" id="email" type="email" name="email" />
+      <FormInput
+        label="password"
+        id="password"
+        type="password"
+        name="password"
+      />
       <button type="button">Signup</button>
     </form>
   );
