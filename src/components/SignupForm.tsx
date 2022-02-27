@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-//Creates a Form Context so the children components (Form Input) can have access to handle change and form state
+//Creates a Form Context so the children components (Form Input) can have access to handle change, submit and form state
 export const FormContext = React.createContext({
   form: {},
   handleFormChange: () => {},
+  submit: () => {},
 });
 
-export const Form = (props: { children: any }) => {
-  const { children } = props;
+export const Form = (props: { children: any; submit: any }) => {
+  const { children, submit = () => {} } = props;
   const [form, setForm] = useState({
     firstname: "",
     email: "",
@@ -37,7 +38,9 @@ export const Form = (props: { children: any }) => {
       >
         {children}
       </FormContext.Provider>
-      
+      <button type="button" onClick={() => submit(form)}>
+        Sign Up
+      </button>
     </form>
   );
 };

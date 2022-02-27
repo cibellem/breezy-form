@@ -7,11 +7,22 @@ import { SuccessCard } from "../components/SucessCard";
 
 export const Signup = () => {
   const [view, setView] = useState<number>(1);
+  const [user, setUser] = useState<object>({});
+
+  const formSubmit = (form: any) => {
+    setView(view + 1);
+    console.log(
+      `Thanks for signing up, ${form.firstname}! We've sent you an email to ${form.email}.`
+    );
+    setUser(form);
+    console.log(form, "fooorm");
+  };
+
   return (
     <main className="main">
       <article className="card">
         {view === 1 ? (
-          <Form>
+          <Form submit={formSubmit}>
             <section className="section_header">
               <h1>Let's</h1>
               <h1>Sign Up</h1>
@@ -38,17 +49,11 @@ export const Signup = () => {
               type="password"
               name="password"
             />
-
-            <div>
-              <button type="button">Sign Up</button>
-            </div>
           </Form>
         ) : (
-          <SuccessCard />
+          <SuccessCard user={user} />
         )}
       </article>
-
-      <button onClick={() => setView(view + 1)}>See view 2</button>
     </main>
   );
 };
