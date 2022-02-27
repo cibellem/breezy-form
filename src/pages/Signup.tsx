@@ -6,7 +6,9 @@ export const Signup = () => {
   const [view, setView] = useState<number>(1);
   return (
     <main className="main">
-      {view === 1 ? <Form /> : <SuccessCard />}
+      <article className="card">
+        {view === 1 ? <Form /> : <SuccessCard />}
+      </article>
 
       <button onClick={() => setView(view + 1)}>See view 2</button>
     </main>

@@ -24,29 +24,52 @@ code {
   margin: auto;
 }
 
-/* Form */
-.form {
-  display: flex;
-  flex-direction: column;
+/* Common styles  */
+
+.card {
   background-color: white;
   box-shadow: 0px 0px 15px #0000003b;
   border-radius: 15px;
   padding: 30px;
 }
 
-.form > .form_header > p {
+button {
+  float: right;
+  display: flex;
+  justify-content: center;
+  min-width: 31%;
+  margin-top: 20px;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  background-color: #f63f3f;
+  color: white;
+}
+
+.section_header > p {
   font-weight: 600;
   font-size: 0.8em;
   margin: 10px 0 5px 0;
 }
 
-.form > .form_header > h1 {
+.section_header > h1 {
+  font-size: 1.5em;
+}
+
+.section_header > h1:first-child {
+  font-weight: 500;
+}
+
+.section_header > h1 {
   margin: 0;
   font-weight: 700;
 }
 
-.form > .form_header > h1:first-child {
-  font-weight: 500;
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
 }
 
 .form > .form_label {
@@ -59,15 +82,4 @@ code {
   border-radius: 5px;
   border: 2px solid rgba(136, 136, 136, 0.226);
   padding: 7px;
-}
-
-.form > button {
-  max-width: 31%;
-  margin-top: 20px;
-  padding: 8px;
-  border-radius: 6px;
-  border: none;
-  font-weight: 500;
-  background-color: #f63f3f;
-  color: white;
 }

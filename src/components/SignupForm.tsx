@@ -4,7 +4,7 @@ import { FormInput } from "./FormInput";
 export const Form = () => {
   return (
     <form className="form">
-      <section className="form_header">
+      <section className="section_header">
         <h1>Let's</h1>
         <h1>Sign Up</h1>
         <p>
@@ -33,7 +33,10 @@ export const Form = () => {
         name="password"
         labelName="Password"
       />
-      <button type="button">Sign Up</button>
+
+      <div>
+        <button type="button">Sign Up</button>
+      </div>
     </form>
   );
 };

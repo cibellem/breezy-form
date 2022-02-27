@@ -2,15 +2,15 @@ import React from "react";
 
 export const SuccessCard = () => {
   return (
-    <section>
-      <h2>Welcome,</h2>
-      <h2>FisrtName</h2>
+    <section className="section_header">
+      <h1>Welcome,</h1>
+      <h1>Cibelle!</h1>
       <p>
         You have been registered for this awesome service. Please check your
         email listed below for instructions.
       </p>
-      <p>email@email.com</p>
-      <button>Sign In</button>
+      <p style={{ fontWeight: "bold" }}>email@email.com</p>
+      <button type="button">Sign In</button>
     </section>
   );
 };
