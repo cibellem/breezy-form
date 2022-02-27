@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //@ts-ignore
-export const FormInput = ({ label, id, type, name }) => {
+export const FormInput = ({ label, id, type, name, labelName }) => {
   const [value, setValue] = useState<string>("");
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -9,8 +9,11 @@ export const FormInput = ({ label, id, type, name }) => {
   };
   return (
     <>
-      <label htmlFor={label}>{label}</label>
+      <label className="form_label" htmlFor={label}>
+        {labelName}
+      </label>
       <input
+        className="form_input"
         id={id}
         type={type}
         name={name}
