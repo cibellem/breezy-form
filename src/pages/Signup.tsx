@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+//Custom Components
 import { Form } from "../components/SignupForm";
+import { FormInput } from "../components/FormInput";
 import { SuccessCard } from "../components/SucessCard";
 
 export const Signup = () => {
@@ -7,7 +10,42 @@ export const Signup = () => {
   return (
     <main className="main">
       <article className="card">
-        {view === 1 ? <Form /> : <SuccessCard />}
+        {view === 1 ? (
+          <Form>
+            <section className="section_header">
+              <h1>Let's</h1>
+              <h1>Sign Up</h1>
+              <p>
+                Use the form below to sign up for this super awesome service.
+                You're only a few steps away!
+              </p>
+            </section>
+            <FormInput
+              label="First Name"
+              id="firstname"
+              type="text"
+              name="firstname"
+            />
+            <FormInput
+              label="Email Address"
+              id="email"
+              type="email"
+              name="email"
+            />
+            <FormInput
+              label="Password"
+              id="password"
+              type="password"
+              name="password"
+            />
+
+            <div>
+              <button type="button">Sign Up</button>
+            </div>
+          </Form>
+        ) : (
+          <SuccessCard />
+        )}
       </article>
 
       <button onClick={() => setView(view + 1)}>See view 2</button>

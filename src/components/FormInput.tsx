@@ -1,24 +1,24 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { FormContext } from "./SignupForm";
 
 //@ts-ignore
-export const FormInput = ({ label, id, type, name, labelName }) => {
-  const [value, setValue] = useState<string>("");
+export const FormInput = ({ label, id, type, name }) => {
+  const formContext = useContext(FormContext);
+  const { form, handleFormChange } = formContext;
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
   return (
     <>
       <label className="form_label" htmlFor={label}>
-        {labelName}
+        {label}
       </label>
       <input
         className="form_input"
         id={id}
         type={type}
         name={name}
-        value={value}
-        onChange={onChange}
+        //@ts-ignore
+        value={form[name]}
+        onChange={handleFormChange}
       />
     </>
   );

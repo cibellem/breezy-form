@@ -1,42 +1,43 @@
-import { useState } from "react";
-import { FormInput } from "./FormInput";
+import React, { useState } from "react";
 
-export const Form = () => {
+//Creates a Form Context so the children components (Form Input) can have access to handle change and form state
+export const FormContext = React.createContext({
+  form: {},
+  handleFormChange: () => {},
+});
+
+export const Form = (props: { children: any }) => {
+  const { children } = props;
+  const [form, setForm] = useState({
+    firstname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Get the name and the new value of the field that caused this change event
+    const { name, value } = event.target;
+    // Makes a copy of the form state and assign new value to the appropriate form field
+    const updatedForm = {
+      ...form,
+      [name]: value,
+    };
+    console.log("Form values: ", updatedForm);
+    setForm(updatedForm);
+  };
   return (
+    //@ts-ignore
     <form className="form">
-      <section className="section_header">
-        <h1>Let's</h1>
-        <h1>Sign Up</h1>
-        <p>
-          Use the form below to sign up for this super awesome service. You're
-          only a few steps away!
-        </p>
-      </section>
-      <FormInput
-        label="name"
-        id="name"
-        type="text"
-        name="name"
-        labelName="First Name"
-      />
-      <FormInput
-        label="email"
-        id="email"
-        type="email"
-        name="email"
-        labelName="Email Address"
-      />
-      <FormInput
-        label="password"
-        id="password"
-        type="password"
-        name="password"
-        labelName="Password"
-      />
-
-      <div>
-        <button type="button">Sign Up</button>
-      </div>
+      <FormContext.Provider
+        value={{
+          form,
+          //@ts-ignore
+          handleFormChange,
+        }}
+      >
+        {children}
+      </FormContext.Provider>
+      
     </form>
   );
 };
