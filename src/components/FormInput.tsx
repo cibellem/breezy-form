@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { FormContext } from "./SignupForm";
 
-//@ts-ignore
-export const FormInput = ({ label, id, type, name }) => {
+export const FormInput = (props: {
+  label: string;
+  id: string;
+  type: string;
+  name: string;
+}) => {
+  const { label, id, type, name } = props;
   const formContext = useContext(FormContext);
-  const { form, handleFormChange } = formContext;
-
+  const { form, errors, handleFormChange } = formContext;
   return (
     <>
       <label className="form_label" htmlFor={label}>
@@ -21,6 +25,11 @@ export const FormInput = ({ label, id, type, name }) => {
         onChange={handleFormChange}
         required
       />
+
+      {
+        //@ts-ignore
+        // errors[name] && <span className="form_error">{errors[name]}</span>
+      }
     </>
-  ); 
+  );
 };
