@@ -9,20 +9,23 @@ export const Signup = () => {
   const [view, setView] = useState<number>(1);
   const [user, setUser] = useState<object>({});
 
-  const formSubmit = (form: any) => {
-    setView(view + 1);
-    console.log(
-      `Thanks for signing up, ${form.firstname}! We've sent you an email to ${form.email}.`
-    );
+  //Customize your form
+  const initialValues = {
+    firstname: "",
+    email: "",
+    password: "",
+  };
+
+  const formSubmit = async (form: any) => {
     setUser(form);
-    console.log(form, "fooorm");
+    setView(view + 1);
   };
 
   return (
     <main className="main">
       <article className="card">
         {view === 1 ? (
-          <Form submit={formSubmit}>
+          <Form initialValues={initialValues} submit={formSubmit}>
             <section className="section_header">
               <h1>Let's</h1>
               <h1>Sign Up</h1>

@@ -1,4 +1,4 @@
-import {  useContext } from "react";
+import { useContext } from "react";
 import { FormContext } from "./SignupForm";
 
 //@ts-ignore
@@ -19,7 +19,8 @@ export const FormInput = ({ label, id, type, name }) => {
         //@ts-ignore
         value={form[name]}
         onChange={handleFormChange}
+        required
       />
     </>
-  );
+  ); 
 };

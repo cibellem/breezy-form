@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FormErrors } from "./FormErrors";
 
 //Creates a Form Context so the children components (Form Input) can have access to handle change, submit and form state
 export const FormContext = React.createContext({
@@ -7,13 +8,13 @@ export const FormContext = React.createContext({
   submit: () => {},
 });
 
-export const Form = (props: { children: any; submit: any }) => {
-  const { children, submit = () => {} } = props;
-  const [form, setForm] = useState({
-    firstname: "",
-    email: "",
-    password: "",
-  });
+export const Form = (props: {
+  children: any;
+  submit: any;
+  initialValues: any;
+}) => {
+  const { children, submit = () => {}, initialValues } = props;
+  const [form, setForm] = useState(initialValues);
 
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Get the name and the new value of the field that caused this change event
@@ -23,9 +24,9 @@ export const Form = (props: { children: any; submit: any }) => {
       ...form,
       [name]: value,
     };
-    console.log("Form values: ", updatedForm);
     setForm(updatedForm);
   };
+
   return (
     //@ts-ignore
     <form className="form">
@@ -41,6 +42,7 @@ export const Form = (props: { children: any; submit: any }) => {
       <button type="button" onClick={() => submit(form)}>
         Sign Up
       </button>
+      {/* <FormErrors formErrors={form.errors} /> */}
     </form>
   );
 };
