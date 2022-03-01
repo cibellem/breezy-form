@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f4f4f4;
   color: #333333;
+  font-family: "Roboto", sans-serif;
 }
 
 code {
@@ -44,7 +45,7 @@ button {
   float: right;
   display: flex;
   justify-content: center;
-  min-width: 31%;
+  min-width: 25%;
   margin-top: 20px;
   padding: 8px;
   border-radius: 6px;
@@ -55,21 +56,22 @@ button {
   cursor: pointer;
 }
 button:disabled {
-  background-color: #696969;
+  cursor: not-allowed;
 }
 
 .section_header > p {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.8em;
-  margin: 10px 0 5px 0;
+  /* margin: 10px 0 5px 0; */
 }
 
 .section_header > h1 {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 .section_header > h1:first-child {
   font-weight: 500;
+  font-size: 1.7em;
 }
 
 .section_header > h1 {
@@ -96,6 +98,6 @@ button:disabled {
 }
 
 .form_error {
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #f63f3f;
 }
