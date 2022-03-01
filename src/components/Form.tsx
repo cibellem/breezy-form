@@ -1,29 +1,24 @@
 import React, { useState } from "react";
+
+//Types
+import { FormValues, IFormContext, FormProps } from "../utils/types";
+//Helpers
 import { validate } from "../utils/validationHelper";
 
-interface FormContext {
-  touched: object;
-  values: object;
-  errors: object | undefined;
-  isValid: boolean;
-  handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-//Creates a Form Context so the children components (Form Input) can have access to handle change, submit and form state
-export const FormContext = React.createContext({} as FormContext);
+//Creates a Form Context so children components like FormInput can have access to handleFormChange, errrors and values;
+export const FormContext = React.createContext<IFormContext | null>(null);
 
-export function Form(props: {
-  children: React.ReactNode;
-  initialValues: object;
-  validations: [];
-  submitHandler: any;
-}): JSX.Element {
+export function Form(props: FormProps): JSX.Element {
   const { children, initialValues, validations, submitHandler } = props;
 
   //By doing it we have an initial state
-  const { isValid: initialIsValid } = validate(validations, initialValues);
+  const { isValid: initialIsValid, errors: initialErrors } = validate(
+    validations,
+    initialValues
+  );
   const [values, setValues] = useState(initialValues);
   const [isValid, setValid] = useState(initialIsValid);
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState(initialErrors);
   const [touched, setTouched] = useState({});
 
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,13 +49,15 @@ export function Form(props: {
       >
         {children}
       </FormContext.Provider>
-      <button
-        disabled={!isValid}
-        type="button"
-        onClick={() => submitHandler(values)}
-      >
-        Sign Up
-      </button>
+      <div>
+        <button
+          disabled={!isValid}
+          type="button"
+          onClick={() => submitHandler(values)}
+        >
+          Sign Up
+        </button>
+      </div>
     </form>
   );
 }

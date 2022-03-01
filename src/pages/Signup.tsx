@@ -1,4 +1,7 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
+
+//Types
+import { FormValues } from "../utils/types";
 
 //Custom Components
 import { Form } from "../components/Form";
@@ -7,15 +10,9 @@ import { formProps } from "../utils/constants";
 import { SuccessCard } from "../components/SucessCard";
 import { validations } from "../utils/validationHelper";
 
-type Form = {
-  firstname: string;
-  email: string;
-  password: string;
-};
-
 export const Signup = () => {
   const [view, setView] = useState<number>(1);
-  const [user, setUser] = useState<object>({});
+  const [user, setUser] = useState<FormValues>();
 
   //Customize your form
   const initialValues = {
@@ -25,17 +22,16 @@ export const Signup = () => {
   };
 
   //Submit the form
-  const submitHandler = (values: SetStateAction<object>) => {
+  const submitHandler = (values: FormValues) => {
     setUser(values);
     setView(view + 1);
   };
 
   return (
     <main className="main">
-      <article className="card">
+      <article className="card fade-in ">
         {view === 1 ? (
           <Form
-            // @ts-ignore
             validations={validations}
             initialValues={initialValues}
             submitHandler={submitHandler}

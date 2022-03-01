@@ -1,14 +1,12 @@
 import { useContext } from "react";
 
+//Types
+import { FormInputProps } from "../utils/types";
+
 //Context
 import { FormContext } from "./Form";
 
-export const FormInput = (props: {
-  label: string;
-  id: string;
-  type: string;
-  name: string;
-}) => {
+export const FormInput = (props: FormInputProps) => {
   const { label, id, type, name } = props;
   const formContext = useContext(FormContext);
   const { values, handleFormChange, errors, touched } = formContext;
@@ -23,23 +21,14 @@ export const FormInput = (props: {
         id={id}
         type={type}
         name={name}
-        // @ts-ignore
         value={values[name]}
         onChange={handleFormChange}
         required
       />
 
-      {
-        // @ts-ignore
-        touched && errors[name] && (
-          <span className="form_error">
-            {
-              // @ts-ignore
-              errors[name]
-            }
-          </span>
-        )
-      }
+      {touched && errors[name] && (
+        <span className="form_error">{errors[name]}</span>
+      )}
     </>
   );
 };

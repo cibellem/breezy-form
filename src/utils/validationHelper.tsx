@@ -16,12 +16,9 @@ export const isRequired = (value: string) => {
 };
 
 export const validations = [
-  // @ts-ignore
   ({ firstname }) =>
     isRequired(firstname) || { firstname: "First Name is required" },
-  // @ts-ignore
   ({ email }) => isRequired(email) || { email: "E-mail is required" },
-  // @ts-ignore
   ({ password }) =>
     isRequired(password) || { password: "Password is required" },
 ];
