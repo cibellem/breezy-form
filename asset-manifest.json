@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/breezy-form/static/css/main.fc2d2562.css",
-    "main.js": "/breezy-form/static/js/main.c2a3285a.js",
+    "main.css": "/breezy-form/static/css/main.db04becc.css",
+    "main.js": "/breezy-form/static/js/main.d1b55797.js",
     "static/js/787.bc4cbd9d.chunk.js": "/breezy-form/static/js/787.bc4cbd9d.chunk.js",
     "index.html": "/breezy-form/index.html",
-    "main.fc2d2562.css.map": "/breezy-form/static/css/main.fc2d2562.css.map",
-    "main.c2a3285a.js.map": "/breezy-form/static/js/main.c2a3285a.js.map",
+    "main.db04becc.css.map": "/breezy-form/static/css/main.db04becc.css.map",
+    "main.d1b55797.js.map": "/breezy-form/static/js/main.d1b55797.js.map",
     "787.bc4cbd9d.chunk.js.map": "/breezy-form/static/js/787.bc4cbd9d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc2d2562.css",
-    "static/js/main.c2a3285a.js"
+    "static/css/main.db04becc.css",
+    "static/js/main.d1b55797.js"
   ]
 }
