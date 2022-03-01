@@ -3,8 +3,9 @@ import { SetStateAction, useState } from "react";
 //Custom Components
 import { Form } from "../components/Form";
 import { FormInput } from "../components/FormInput";
+import { formProps } from "../utils/constants";
 import { SuccessCard } from "../components/SucessCard";
-import { isRequired } from "../utils/validationHelper";
+import { validations } from "../utils/validationHelper";
 
 type Form = {
   firstname: string;
@@ -23,17 +24,7 @@ export const Signup = () => {
     password: "",
   };
 
-  const validations = [
-    // @ts-ignore
-    ({ firstname }) =>
-      isRequired(firstname) || { firstname: "First Name is required" },
-    // @ts-ignore
-    ({ email }) => isRequired(email) || { email: "E-mail is required" },
-    // @ts-ignore
-    ({ password }) =>
-      isRequired(password) || { password: "Password is required" },
-  ];
-
+  //Submit the form
   const submitHandler = (values: SetStateAction<object>) => {
     setUser(values);
     setView(view + 1);
@@ -57,26 +48,16 @@ export const Signup = () => {
                 You're only a few steps away!
               </p>
             </section>
-            <FormInput
-              label="First Name"
-              id="firstname"
-              type="text"
-              name="firstname"
-            />
-
-            <FormInput
-              label="Email Address"
-              id="email"
-              type="email"
-              name="email"
-            />
-
-            <FormInput
-              label="Password"
-              id="password"
-              type="password"
-              name="password"
-            />
+            {formProps.map((form) => {
+              return (
+                <FormInput
+                  label={form.label}
+                  id={form.id}
+                  type={form.type}
+                  name={form.name}
+                />
+              );
+            })}
           </Form>
         ) : (
           <SuccessCard user={user} />

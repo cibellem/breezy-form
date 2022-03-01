@@ -14,3 +14,14 @@ export const validate = (validations: [], values: object) => {
 export const isRequired = (value: string) => {
   return value != null && value.trim().length > 0;
 };
+
+export const validations = [
+  // @ts-ignore
+  ({ firstname }) =>
+    isRequired(firstname) || { firstname: "First Name is required" },
+  // @ts-ignore
+  ({ email }) => isRequired(email) || { email: "E-mail is required" },
+  // @ts-ignore
+  ({ password }) =>
+    isRequired(password) || { password: "Password is required" },
+];
