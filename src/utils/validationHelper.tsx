@@ -27,14 +27,14 @@ export const passWordValid = (value: string) => {
 
 export const validations = [
   ({ firstname }) =>
-    isRequired(firstname) || { firstname: "First name is required" },
-  ({ email }) => emailValid(email) || { email: "Invalid email format" },
-  ({ email }) => isRequired(email) || { email: "E-mail is required" },
+    isRequired(firstname) || { firstname: "First name is required." },
+  ({ email }) => emailValid(email) || { email: "Invalid email format." },
+  ({ email }) => isRequired(email) || { email: "E-mail is required." },
 
   ({ password }) =>
     passWordValid(password) || {
-      password: "Password needs to be grater than 5 character",
+      password: "Password should be at least 6 characters long.",
     },
   ({ password }) =>
-    isRequired(password) || { password: "Password is required" },
+    isRequired(password) || { password: "Password is required." },
 ];
