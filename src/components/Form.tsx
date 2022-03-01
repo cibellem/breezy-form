@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 //Types
-import { FormValues, IFormContext, FormProps } from "../utils/types";
+import { IFormContext, FormProps } from "../utils/types";
 //Helpers
 import { validate } from "../utils/validationHelper";
 

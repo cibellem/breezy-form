@@ -85,13 +85,13 @@ button:disabled {
   flex-direction: column;
 }
 
-.form > .form_label {
+.form_label {
   margin: 10px 0 5px 0;
   font-size: 0.8em;
   font-weight: 700;
 }
 
-.form > .form_input {
+.form_input {
   border-radius: 5px;
   border: 2px solid rgba(136, 136, 136, 0.226);
   padding: 7px;
@@ -100,4 +100,57 @@ button:disabled {
 .form_error {
   font-size: 0.7em;
   color: #f63f3f;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 1.5s;
+  -webkit-animation: fadeIn 1.5s;
+  -moz-animation: fadeIn 1.5s;
+  -o-animation: fadeIn 1.5s;
+  -ms-animation: fadeIn 1.5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
