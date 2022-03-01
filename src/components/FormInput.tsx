@@ -13,7 +13,7 @@ export const FormInput = (props: FormInputProps) => {
 
   return (
     <>
-      <label className="form_label" htmlFor={label}>
+      <label className="form_label" htmlFor={id}>
         {label}
       </label>
       <input
