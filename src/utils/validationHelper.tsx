@@ -15,10 +15,26 @@ export const isRequired = (value: string) => {
   return value != null && value.trim().length > 0;
 };
 
+export const emailValid = (value: string) => {
+  const regex =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  return regex.test(value) === true;
+};
+
+export const passWordValid = (value: string) => {
+  return value != null && value.trim().length > 5;
+};
+
 export const validations = [
   ({ firstname }) =>
-    isRequired(firstname) || { firstname: "First Name is required" },
+    isRequired(firstname) || { firstname: "First name is required" },
+  ({ email }) => emailValid(email) || { email: "Invalid email format" },
   ({ email }) => isRequired(email) || { email: "E-mail is required" },
+
+  ({ password }) =>
+    passWordValid(password) || {
+      password: "Password needs to be grater than 5 character",
+    },
   ({ password }) =>
     isRequired(password) || { password: "Password is required" },
 ];
