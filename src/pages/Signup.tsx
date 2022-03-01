@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 //Custom Components
-import { Form } from "../components/SignupForm";
+import { Form, FormContext } from "../components/Form";
 import { FormInput } from "../components/FormInput";
 import { SuccessCard } from "../components/SucessCard";
 
@@ -22,46 +22,23 @@ export const Signup = () => {
     password: "",
   };
 
-  const formSubmit = async (form: Form) => {
-    let errors = await validate(form);
-    console.log(errors, "ERRORS FROM FORM");
-    if (Object.keys(errors).length === 0) {
-      setUser(form);
-      setView(view + 1);
-    } else {
-    }
-  };
+  const validations = [
+    ({ firstname }) =>
+      isRequired(firstname) || { firstname: "First Name is required" },
+    ({ email }) => isRequired(email) || { email: "E-mail is required" },
+    ({ password }) =>
+      isRequired(password) || { password: "Password is required" },
+  ];
 
-  const validate = (values: Form) => {
-    //@ts-ignore
-    let errors = {};
-    if (!values.firstname) {
-      //@ts-ignore
-      errors.firstname = "Required Field";
-    }
-    if (!values.email) {
-      //@ts-ignore
-      errors.email = "Email address is required";
-    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      //@ts-ignore
-      errors.email = "Email address is invalid";
-    }
-    if (!values.password) {
-      //@ts-ignore
-      errors.password = "Password is required";
-    } else if (values.password.length < 8) {
-      //@ts-ignore
-      errors.password = "Password must be 8 or more characters";
-    }
-    //@ts-ignore
-    return errors;
+  const isRequired = (value) => {
+    return value != null && value.trim().length > 0;
   };
 
   return (
     <main className="main">
       <article className="card">
         {view === 1 ? (
-          <Form initialValues={initialValues} submit={formSubmit}>
+          <Form validations={validations} initialValues={initialValues}>
             <section className="section_header">
               <h1>Let's</h1>
               <h1>Sign Up</h1>
@@ -83,6 +60,7 @@ export const Signup = () => {
               type="email"
               name="email"
             />
+
             <FormInput
               label="Password"
               id="password"
