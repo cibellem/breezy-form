@@ -30,15 +30,16 @@ export const Signup = () => {
   return (
     <main className="main">
       {view === 2 && (
-        <span
+        <a
           style={{
             margin: "10px",
             position: "absolute",
             top: "0",
           }}
+          href="."
         >
-          Try Again
-        </span>
+          Test Again
+        </a>
       )}
       <article className="card fade-in ">
         {view === 1 ? (
