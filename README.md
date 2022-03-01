@@ -18,7 +18,8 @@ The form has input field validation and can be fully customized to any bussiness
 ## Demo/Live application:
 
 Github Pages : https://cibellem.github.io/breezy-form/ <br/>
-
+![Desktop](/src/breezyform.png) <br>
+![Mobile](/src/breezyform_mobile.png) <br>
 
 ## Future Improvements/Ideas:
 
@@ -29,5 +30,3 @@ Allow style customization so it can fit any and every project <br/>
 
 I'm very satisfied with the outcome of the form. My main goal was to build a reusable form that I can use not only to showcase my technical skills but also on my personal projects. <br/>
 For simplicity I decided to stick with plain CSS. <br/>
-
-
