@@ -47,6 +47,7 @@ export const Signup = () => {
             {formProps.map((form) => {
               return (
                 <FormInput
+                  key={form.id}
                   label={form.label}
                   id={form.id}
                   type={form.type}
