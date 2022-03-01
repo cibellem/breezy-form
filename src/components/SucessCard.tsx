@@ -13,6 +13,7 @@ export const SuccessCard = (props: { user: FormValues }) => {
       </p>
       <p style={{ fontWeight: "bold" }}>{user.email}</p>
       <button type="button">Sign In</button>
+     
     </section>
   );
 };

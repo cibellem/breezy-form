@@ -29,6 +29,17 @@ export const Signup = () => {
 
   return (
     <main className="main">
+      {view === 2 && (
+        <span
+          style={{
+            margin: "10px",
+            position: "absolute",
+            top: "0",
+          }}
+        >
+          Try Again
+        </span>
+      )}
       <article className="card fade-in ">
         {view === 1 ? (
           <Form
