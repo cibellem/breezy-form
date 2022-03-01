@@ -23,14 +23,23 @@ export const FormInput = (props: {
         id={id}
         type={type}
         name={name}
+        // @ts-ignore
         value={values[name]}
         onChange={handleFormChange}
         required
       />
 
-      {touched && errors[name] && (
-        <span className="form_error">{errors[name]}</span>
-      )}
+      {
+        // @ts-ignore
+        touched && errors[name] && (
+          <span className="form_error">
+            {
+              // @ts-ignore
+              errors[name]
+            }
+          </span>
+        )
+      }
     </>
   );
 };

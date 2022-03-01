@@ -1,9 +1,10 @@
-import { useState, useContext } from "react";
+import { SetStateAction, useState } from "react";
 
 //Custom Components
-import { Form, FormContext } from "../components/Form";
+import { Form } from "../components/Form";
 import { FormInput } from "../components/FormInput";
 import { SuccessCard } from "../components/SucessCard";
+import { isRequired } from "../utils/validationHelper";
 
 type Form = {
   firstname: string;
@@ -23,22 +24,31 @@ export const Signup = () => {
   };
 
   const validations = [
+    // @ts-ignore
     ({ firstname }) =>
       isRequired(firstname) || { firstname: "First Name is required" },
+    // @ts-ignore
     ({ email }) => isRequired(email) || { email: "E-mail is required" },
+    // @ts-ignore
     ({ password }) =>
       isRequired(password) || { password: "Password is required" },
   ];
 
-  const isRequired = (value) => {
-    return value != null && value.trim().length > 0;
+  const submitHandler = (values: SetStateAction<object>) => {
+    setUser(values);
+    setView(view + 1);
   };
 
   return (
     <main className="main">
       <article className="card">
         {view === 1 ? (
-          <Form validations={validations} initialValues={initialValues}>
+          <Form
+            // @ts-ignore
+            validations={validations}
+            initialValues={initialValues}
+            submitHandler={submitHandler}
+          >
             <section className="section_header">
               <h1>Let's</h1>
               <h1>Sign Up</h1>
